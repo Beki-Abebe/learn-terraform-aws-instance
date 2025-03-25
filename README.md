@@ -10,9 +10,9 @@ human-readable, declarative configuration files, and manages your infrastructure
 Retrieve the terraform binary by downloading a pre-compiled binary or compiling it from source.  
 here is the link [Terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
 
-To install `Terraform`, find the appropriate package for your system and download it as a zip archive. After downloading  
-`Terraform`, unzip the package. `Terraform` runs as a single binary named terraform. Any other files in the package can  
-be safely removed and `Terraform` will still function.
+To install `Terraform`, find the appropriate package for your system and download it as a zip archive. After  
+downloading `Terraform`, unzip the package. `Terraform` runs as a single binary named terraform. Any other  
+files in the package can be safely removed and `Terraform` will still function.  
 
 Finally, make sure that the terraform binary is available on your `PATH`. This process will differ depending on your  
 operating system I'll show you for Linux OS. 
@@ -21,8 +21,9 @@ Print a colon-separated list of locations in your PATH.
 
 `$ echo $PATH`
 
-Move the Terraform binary to one of the listed locations. This command assumes that the binary is currently in your    
-downloads folder and that your `PATH` includes `/usr/local/bin`, but you can customize it if your locations are different.
+Move the Terraform binary to one of the listed locations. This command assumes that the binary is currently in your      
+downloads folder and that your `PATH` includes `/usr/local/bin`, but you can customize it if your locations are   
+different.
 
 `$ mv ~/Downloads/terraform /usr/local/bin/`
 
@@ -74,7 +75,7 @@ Create a file to define your infrastructure.
 Open `main.tf` in your code editor, paste in the configuration below, and save the file.
 
 - Tip
-The AMI ID used in this configuration is specific to the us-west-2 region. If you would like to use a different region,  
+The AMI ID used in this configuration is specific to the us-west-2 region. If you would like to use a different region,    
 see the Troubleshooting section for guidance.
 
 ```
@@ -102,43 +103,43 @@ resource "aws_instance" "app_server" {
   }
 }
 ```
-This is a complete configuration that you can deploy with Terraform. The following sections review each block of this   
+This is a complete configuration that you can deploy with Terraform. The following sections review each block of this     
 configuration in more detail.
 
 ## Terraform Block
-The `terraform {}` block contains Terraform settings, including the required providers Terraform will use to provision your   
-infrastructure. For each provider, the `source` attribute defines an optional hostname, a namespace, and the provider type.   
-Terraform installs providers from the Terraform Registry by default. In this example configuration, the `aws` provider's   
-source is defined as `hashicorp/aws`, which is shorthand for `registry.terraform.io/hashicorp/aws`.
+The `terraform {}` block contains Terraform settings, including the required providers Terraform will use to provision   
+your infrastructure. For each provider, the `source` attribute defines an optional hostname, a namespace, and the   
+provider type. Terraform installs providers from the Terraform Registry by default. In this example configuration,   
+the `aws` provider's source is defined as `hashicorp/aws`, which is shorthand for `registry.terraform.io/hashicorp/aws`.    
 
-You can also set a version constraint for each provider defined in the `required_providers` block. The `version` attribute is   
-optional, but we recommend using it to constrain the provider version so that Terraform does not install a version of the   
-provider that does not work with your configuration. If you do not specify a provider version, Terraform will automatically   
-download the most recent version during initialization.
+You can also set a version constraint for each provider defined in the `required_providers` block. The `version`  
+attribute is optional, but we recommend using it to constrain the provider version so that Terraform does not   
+install a version of the provider that does not work with your configuration. If you do not specify a provider  
+version, Terraform will automatically download the most recent version during initialization.   
 
 ## Providers
-The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that Terraform uses   
+The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that Terraform uses    
 to create and manage your resources. 
 
-You can use multiple provider blocks in your Terraform configuration to manage resources from different providers. You can   
-even use different providers together. For example, you could pass the IP address of your AWS EC2 instance to a monitoring   
-resource from DataDog.
+You can use multiple provider blocks in your Terraform configuration to manage resources from different providers.  
+You can even use different providers together. For example, you could pass the IP address of your AWS EC2 instance to  
+a monitoring resource from DataDog.  
 
 ## Resources
-Use `resource` blocks to define components of your infrastructure. A resource might be a physical or virtual component such   
-as an EC2 instance, or it can be a logical resource such as a Heroku application.
+Use `resource` blocks to define components of your infrastructure. A resource might be a physical or virtual component  
+such as an EC2 instance, or it can be a logical resource such as a Heroku application.  
 
-Resource blocks have two strings before the block: the resource type and the resource name. In this example, the resource   
-type is `aws_instance` and the name is `app_server`. The prefix of the type maps to the name of the provider. In the example   
-configuration, Terraform manages the `aws_instance` resource with the `aws` provider. Together, the resource type and resource  
+Resource blocks have two strings before the block: the resource type and the resource name. In this example, the resource     
+type is `aws_instance` and the name is `app_server`. The prefix of the type maps to the name of the provider. In the example    
+configuration, Terraform manages the `aws_instance` resource with the `aws` provider. Together, the resource type and resource    
 name form a unique ID for the resource. For example, the ID for your EC2 instance is `aws_instance.app_server`.
 
-Resource blocks contain arguments which you use to configure the resource. Arguments can include things like machine sizes, 
-disk image names, or VPC IDs. For your EC2 instance, the example configuration sets the AMI ID to an Ubuntu image, and the   
-instance type to `t2.micro`, which qualifies for AWS free tier. It also sets a tag to give the instance a name.  
+Resource blocks contain arguments which you use to configure the resource. Arguments can include things like machine sizes,   
+disk image names, or VPC IDs. For your EC2 instance, the example configuration sets the AMI ID to an Ubuntu image, and the     
+instance type to `t2.micro`, which qualifies for AWS free tier. It also sets a tag to give the instance a name.    
 
 ## Initialize the directory
-When you create a new configuration — or check out an existing configuration from version control — you need to initialize  
+When you create a new configuration — or check out an existing configuration from version control — you need to initialize    
 the directory with `terraform init`.
 
 Initializing a configuration directory downloads and installs the providers defined in the configuration, which in this case  
@@ -178,23 +179,24 @@ want to update the providers used for your project.
 
 ## Format and validate the configuration
 
-We recommend using consistent formatting in all of your configuration files. The `terraform fmt` command automatically updates   
-configurations in the current directory for readability and consistency.
+We recommend using consistent formatting in all of your configuration files. The `terraform fmt` command automatically  
+updates configurations in the current directory for readability and consistency.  
 
-Format your configuration. Terraform will print out the names of the files it modified, if any. In this case, your configuration   
-file was already formatted correctly, so Terraform won't return any file names.
+Format your configuration. Terraform will print out the names of the files it modified, if any. In this case, your  
+configuration file was already formatted correctly, so Terraform won't return any file names.  
 
 `$ terraform fmt`
 
-You can also make sure your configuration is syntactically valid and internally consistent by using the `terraform validate`  
-command. Validate your configuration. The example configuration provided above is valid, so Terraform will return a success message.  
+You can also make sure your configuration is syntactically valid and internally consistent by using the  
+`terraform validate` command. Validate your configuration. The example configuration provided above is valid,  
+so Terraform will return a success message.   
 
 `$ terraform validate  
 Success! The configuration is valid.`
 
 ## Create infrastructure
-Apply the configuration now with the `terraform apply` command. Terraform will print output similar to what is shown below. We   
-have truncated some of the output to save space.
+Apply the configuration now with the `terraform apply` command. Terraform will print output similar to what is shown below.  
+We have truncated some of the output to save space.  
 ```
 $ terraform apply
 
@@ -219,20 +221,20 @@ Do you want to perform these actions?
   Enter a value:
 ```
 - Tip If your configuration fails to apply, you may have customized your region or removed your default VPC.
-Before it applies any changes, Terraform prints out the execution plan which describes the actions Terraform will take in order  
-to change your infrastructure to match the configuration.
+Before it applies any changes, Terraform prints out the execution plan which describes the actions Terraform will take in
+order to change your infrastructure to match the configuration.  
 
-The output format is similar to the diff format generated by tools such as Git. The output has a `+` next to `aws_instance.app_server`,   
-meaning that Terraform will create this resource. Beneath that, it shows the attributes that will be set. When the value displayed   
-is (known after apply), it means that the value will not be known until the resource is created. For example, AWS assigns Amazon   
-Resource Names (ARNs) to instances upon creation, so Terraform cannot know the value of the `arn` attribute until you apply the   
-change and the AWS provider returns that value from the AWS API.
+The output format is similar to the diff format generated by tools such as Git. The output has a `+` next to   
+`aws_instance.app_server`, meaning that Terraform will create this resource. Beneath that, it shows the attributes that  
+will be set. When the value displayed is (known after apply), it means that the value will not be known until the resource  
+is created. For example, AWS assigns Amazon Resource Names (ARNs) to instances upon creation, so Terraform cannot know the  
+value of the `arn` attribute until you apply the change and the AWS provider returns that value from the AWS API.  
 
-Terraform will now pause and wait for your approval before proceeding. If anything in the plan seems incorrect or dangerous, it  
-is safe to abort here before Terraform modifies your infrastructure.
+Terraform will now pause and wait for your approval before proceeding. If anything in the plan seems incorrect or dangerous,  
+it is safe to abort here before Terraform modifies your infrastructure.  
 
-In this case the plan is acceptable, so type `yes` at the confirmation prompt to proceed. Executing the plan will take a few minutes   
-since Terraform waits for the EC2 instance to become available.
+In this case the plan is acceptable, so type `yes` at the confirmation prompt to proceed. Executing the plan will take a few   
+minutes since Terraform waits for the EC2 instance to become available.  
 ```
   Enter a value: yes
 
