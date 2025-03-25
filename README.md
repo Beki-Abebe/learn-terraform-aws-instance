@@ -107,23 +107,25 @@ This is a complete configuration that you can deploy with Terraform. The followi
 configuration in more detail.
 
 ## Terraform Block
-The `terraform {}` block contains Terraform settings, including the required providers Terraform will use to provision   
-your infrastructure. For each provider, the `source` attribute defines an optional hostname, a namespace, and the   
-provider type. Terraform installs providers from the Terraform Registry by default. In this example configuration,   
-the `aws` provider's source is defined as `hashicorp/aws`, which is shorthand for `registry.terraform.io/hashicorp/aws`.    
+The `terraform {}` block contains Terraform settings, including the required providers Terraform will use to   
+provision your infrastructure. For each provider, the `source` attribute defines an optional hostname,  
+a namespace, and the provider type. Terraform installs providers from the Terraform Registry by default.  
+In this example configuration, the `aws` provider's source is defined as `hashicorp/aws`, which is shorthand  
+for `registry.terraform.io/hashicorp/aws`.      
 
-You can also set a version constraint for each provider defined in the `required_providers` block. The `version`  
-attribute is optional, but we recommend using it to constrain the provider version so that Terraform does not   
-install a version of the provider that does not work with your configuration. If you do not specify a provider  
-version, Terraform will automatically download the most recent version during initialization.   
+You can also set a version constraint for each provider defined in the `required_providers` block. The   
+`version` attribute is optional, but we recommend using it to constrain the provider version so that    
+Terraform does not install a version of the provider that does not work with your configuration. If  
+you do not specify a provider version, Terraform will automatically download the most recent version
+during initialization.    
 
 ## Providers
-The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that Terraform uses    
-to create and manage your resources. 
+The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that  
+Terraform uses to create and manage your resources.   
 
-You can use multiple provider blocks in your Terraform configuration to manage resources from different providers.  
-You can even use different providers together. For example, you could pass the IP address of your AWS EC2 instance to  
-a monitoring resource from DataDog.  
+You can use multiple provider blocks in your Terraform configuration to manage resources from different  
+providers. You can even use different providers together. For example, you could pass the IP address of   
+your AWS EC2 instance to a monitoring resource from DataDog.    
 
 ## Resources
 Use `resource` blocks to define components of your infrastructure. A resource might be a physical or virtual component  
