@@ -10,9 +10,9 @@ human-readable, declarative configuration files, and manages your infrastructure
 Retrieve the terraform binary by downloading a pre-compiled binary or compiling it from source.  
 here is the link [Terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
 
-To install `Terraform`, find the appropriate package for your system and download it as a zip archive. After  
-downloading `Terraform`, unzip the package. `Terraform` runs as a single binary named terraform. Any other 
-files in the package can be safely removed and `Terraform` will still function.
+To install `Terraform`, find the appropriate package for your system and download it as a zip archive. After downloading  
+`Terraform`, unzip the package. `Terraform` runs as a single binary named terraform. Any other files in the package can  
+be safely removed and `Terraform` will still function.
 
 Finally, make sure that the terraform binary is available on your `PATH`. This process will differ depending on your  
 operating system I'll show you for Linux OS. 
@@ -45,8 +45,8 @@ other commands, please read the help and docs before usage.
 ```
 # Build infrastructure
 
-With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on Amazon  
-Web Services (AWS). EC2 instances are virtual machines running on AWS,and a common component of many infrastructure projects.  
+With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on Amazon Web Services.  
+EC2 instances are virtual machines running on AWS,and a common component of many infrastructure projects.  
 
 **Prerequisites**  
 *To follow this steps you will need:*
