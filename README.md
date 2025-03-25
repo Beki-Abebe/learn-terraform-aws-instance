@@ -30,8 +30,10 @@ For more detail about adding binaries to your `path`, see this Stack Overflow ar
 ### Verify the installation
 Verify that the installation worked by opening a new terminal session and listing Terraform's available subcommands.
 
-`$ terraform -help`  you should be seeing  
+`$ terraform -help` 
 
+you should be seeing  
+```
 Usage: terraform [-version] [-help] <command> [args]  
 
 The available commands for execution are listed below.  
@@ -40,16 +42,14 @@ less common or more advanced commands. If you're just getting
 started with Terraform, stick with the common commands. For the  
 other commands, please read the help and docs before usage.  
 ##...
-
+```
 # Build infrastructure
 
-With Terraform installed, we are ready to create your first infrastructure.  
-
-we will provision an EC2 instance on Amazon Web Services (AWS). EC2 instances are virtual machines running on AWS,  
-and a common component of many infrastructure projects.
+With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on Amazon  
+Web Services (AWS). EC2 instances are virtual machines running on AWS,and a common component of many infrastructure projects.  
 
 **Prerequisites**  
-To follow this tutorial you will need:
+*To follow this steps you will need:*
 - The Terraform CLI (1.2.0+) installed.
 - The AWS CLI installed.
 - AWS account and associated credentials that allow you to create resources.
