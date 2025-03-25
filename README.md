@@ -75,8 +75,8 @@ Create a file to define your infrastructure.
 Open `main.tf` in your code editor, paste in the configuration below, and save the file.
 
 - Tip
-The AMI ID used in this configuration is specific to the us-west-2 region. If you would like to use a different region,    
-see the Troubleshooting section for guidance.
+The AMI ID used in this configuration is specific to the us-west-2 region. If you would like to use a different
+region, see the Troubleshooting section for guidance.  
 
 ```
 terraform {
@@ -103,8 +103,8 @@ resource "aws_instance" "app_server" {
   }
 }
 ```
-This is a complete configuration that you can deploy with Terraform. The following sections review each block of this     
-configuration in more detail.
+This is a complete configuration that you can deploy with Terraform. The following sections review each block of    
+this configuration in more detail.  
 
 ## Terraform Block
 The `terraform {}` block contains Terraform settings, including the required providers Terraform will use to   
@@ -128,24 +128,26 @@ providers. You can even use different providers together. For example, you could
 your AWS EC2 instance to a monitoring resource from DataDog.    
 
 ## Resources
-Use `resource` blocks to define components of your infrastructure. A resource might be a physical or virtual component  
-such as an EC2 instance, or it can be a logical resource such as a Heroku application.  
+Use `resource` blocks to define components of your infrastructure. A resource might be a physical or  
+virtual component such as an EC2 instance, or it can be a logical resource such as a Heroku application.    
 
-Resource blocks have two strings before the block: the resource type and the resource name. In this example, the resource     
-type is `aws_instance` and the name is `app_server`. The prefix of the type maps to the name of the provider. In the example    
-configuration, Terraform manages the `aws_instance` resource with the `aws` provider. Together, the resource type and resource    
-name form a unique ID for the resource. For example, the ID for your EC2 instance is `aws_instance.app_server`.
+Resource blocks have two strings before the block: the resource type and the resource name. In this  
+example, the resource type is `aws_instance` and the name is `app_server`. The prefix of the type maps  
+to the name of the provider. In the example configuration, Terraform manages the `aws_instance` resource
+with the `aws` provider. Together, the resource type and resource name form a unique ID for the resource.
+For example, the ID for your EC2 instance is `aws_instance.app_server`.  
 
-Resource blocks contain arguments which you use to configure the resource. Arguments can include things like machine sizes,   
-disk image names, or VPC IDs. For your EC2 instance, the example configuration sets the AMI ID to an Ubuntu image, and the     
-instance type to `t2.micro`, which qualifies for AWS free tier. It also sets a tag to give the instance a name.    
+Resource blocks contain arguments which you use to configure the resource. Arguments can include things    
+like machine sizes, disk image names, or VPC IDs. For your EC2 instance, the example configuration sets   
+the AMI ID to an Ubuntu image, and the instance type to `t2.micro`, which qualifies for AWS free tier.   
+It also sets a tag to give the instance a name.     
 
 ## Initialize the directory
-When you create a new configuration — or check out an existing configuration from version control — you need to initialize    
-the directory with `terraform init`.
+When you create a new configuration — or check out an existing configuration from version control — you  
+need to initialize the directory with `terraform init`.
 
-Initializing a configuration directory downloads and installs the providers defined in the configuration, which in this case  
-is the aws provider.
+Initializing a configuration directory downloads and installs the providers defined in the configuration,  
+which in this case is the aws provider.  
 
 Initialize the directory.
 ```
@@ -174,31 +176,31 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Terraform downloads the `aws` provider and installs it in a hidden subdirectory of your current working directory, named    
-`.terraform`. The `terraform init` command prints out which version of the provider was installed. Terraform also creates  
-a lock file named `.terraform.lock.hcl` which specifies the exact provider versions used, so that you can control when you  
-want to update the providers used for your project.
+Terraform downloads the `aws` provider and installs it in a hidden subdirectory of your current working  
+directory, named `.terraform`. The `terraform init` command prints out which version of the provider was  
+installed. Terraform also creates a lock file named `.terraform.lock.hcl` which specifies the exact provider
+versions used, so that you can control when you want to update the providers used for your project.  
 
 ## Format and validate the configuration
 
-We recommend using consistent formatting in all of your configuration files. The `terraform fmt` command automatically  
-updates configurations in the current directory for readability and consistency.  
+We recommend using consistent formatting in all of your configuration files. The `terraform fmt` command  
+automatically updates configurations in the current directory for readability and consistency.    
 
-Format your configuration. Terraform will print out the names of the files it modified, if any. In this case, your  
-configuration file was already formatted correctly, so Terraform won't return any file names.  
+Format your configuration. Terraform will print out the names of the files it modified, if any. In this   
+case, your configuration file was already formatted correctly, so Terraform won't return any file names.    
 
 `$ terraform fmt`
 
-You can also make sure your configuration is syntactically valid and internally consistent by using the  
-`terraform validate` command. Validate your configuration. The example configuration provided above is valid,  
-so Terraform will return a success message.   
+You can also make sure your configuration is syntactically valid and internally consistent by using the    
+`terraform validate` command. Validate your configuration. The example configuration provided above is   
+valid, so Terraform will return a success message.     
 
 `$ terraform validate  
 Success! The configuration is valid.`
 
 ## Create infrastructure
-Apply the configuration now with the `terraform apply` command. Terraform will print output similar to what is shown below.  
-We have truncated some of the output to save space.  
+Apply the configuration now with the `terraform apply` command. Terraform will print output similar to  
+what is shown below. We have truncated some of the output to save space.   
 ```
 $ terraform apply
 
@@ -222,21 +224,22 @@ Do you want to perform these actions?
 
   Enter a value:
 ```
-- Tip If your configuration fails to apply, you may have customized your region or removed your default VPC.
-Before it applies any changes, Terraform prints out the execution plan which describes the actions Terraform will take in
-order to change your infrastructure to match the configuration.  
+- Tip If your configuration fails to apply, you may have customized your region or removed your
+  default VPC. Before it applies any changes, Terraform prints out the execution plan which describes  
+   the actions Terraform will take in order to change your infrastructure to match the configuration.    
 
-The output format is similar to the diff format generated by tools such as Git. The output has a `+` next to   
-`aws_instance.app_server`, meaning that Terraform will create this resource. Beneath that, it shows the attributes that  
-will be set. When the value displayed is (known after apply), it means that the value will not be known until the resource  
-is created. For example, AWS assigns Amazon Resource Names (ARNs) to instances upon creation, so Terraform cannot know the  
-value of the `arn` attribute until you apply the change and the AWS provider returns that value from the AWS API.  
+The output format is similar to the diff format generated by tools such as Git. The output has a `+`   
+next to `aws_instance.app_server`, meaning that Terraform will create this resource. Beneath that, it 
+shows the attributes that will be set. When the value displayed is (known after apply), it means that the   
+value will not be known until the resource is created. For example, AWS assigns Amazon Resource Names (ARNs) 
+to instances upon creation, so Terraform cannot know the value of the `arn` attribute until you apply the 
+change and the AWS provider returns that value from the AWS API.   
 
-Terraform will now pause and wait for your approval before proceeding. If anything in the plan seems incorrect or dangerous,  
-it is safe to abort here before Terraform modifies your infrastructure.  
+Terraform will now pause and wait for your approval before proceeding. If anything in the plan seems incorrect  
+or dangerous, it is safe to abort here before Terraform modifies your infrastructure.  
 
-In this case the plan is acceptable, so type `yes` at the confirmation prompt to proceed. Executing the plan will take a few   
-minutes since Terraform waits for the EC2 instance to become available.  
+In this case the plan is acceptable, so type `yes` at the confirmation prompt to proceed. Executing the plan will  
+take a few minutes since Terraform waits for the EC2 instance to become available.  
 ```
   Enter a value: yes
 
