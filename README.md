@@ -45,8 +45,9 @@ other commands, please read the help and docs before usage.
 ```
 # Build infrastructure
 
-With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on Amazon Web Services.  
-EC2 instances are virtual machines running on AWS,and a common component of many infrastructure projects.  
+With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on   
+Amazon Web Services. EC2 instances are virtual machines running on AWS,and a common component of many   
+infrastructure projects.  
 
 **Prerequisites**  
 *To follow this steps you will need:*
@@ -116,8 +117,8 @@ provider that does not work with your configuration. If you do not specify a pro
 download the most recent version during initialization.
 
 ## Providers
-The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that Terraform uses to create  
-and manage your resources.
+The `provider` block configures the specified provider, in this case `aws`. A provider is a plugin that Terraform uses   
+to create and manage your resources. 
 
 You can use multiple provider blocks in your Terraform configuration to manage resources from different providers. You can   
 even use different providers together. For example, you could pass the IP address of your AWS EC2 instance to a monitoring   
@@ -170,10 +171,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Terraform downloads the `aws` provider and installs it in a hidden subdirectory of your current working directory, named `.terraform`.  
-The `terraform init` command prints out which version of the provider was installed. Terraform also creates a lock file named   
-`.terraform.lock.hcl` which specifies the exact provider versions used, so that you can control when you want to update the providers  
-used for your project.
+Terraform downloads the `aws` provider and installs it in a hidden subdirectory of your current working directory, named    
+`.terraform`. The `terraform init` command prints out which version of the provider was installed. Terraform also creates  
+a lock file named `.terraform.lock.hcl` which specifies the exact provider versions used, so that you can control when you  
+want to update the providers used for your project.
 
 ## Format and validate the configuration
 
@@ -185,9 +186,8 @@ file was already formatted correctly, so Terraform won't return any file names.
 
 `$ terraform fmt`
 
-You can also make sure your configuration is syntactically valid and internally consistent by using the `terraform validate` command.
-
-Validate your configuration. The example configuration provided above is valid, so Terraform will return a success message.
+You can also make sure your configuration is syntactically valid and internally consistent by using the `terraform validate`  
+command. Validate your configuration. The example configuration provided above is valid, so Terraform will return a success message.  
 
 `$ terraform validate  
 Success! The configuration is valid.`
@@ -218,9 +218,7 @@ Do you want to perform these actions?
 
   Enter a value:
 ```
-- Tip If your configuration fails to apply, you may have customized your region or removed your default VPC. Refer to the troubleshooting   
-section of this tutorial for help.
-
+- Tip If your configuration fails to apply, you may have customized your region or removed your default VPC.
 Before it applies any changes, Terraform prints out the execution plan which describes the actions Terraform will take in order  
 to change your infrastructure to match the configuration.
 
