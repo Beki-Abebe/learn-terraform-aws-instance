@@ -15,7 +15,9 @@ downloading `Terraform`, unzip the package. `Terraform` runs as a single binary 
 files in the package can be safely removed and `Terraform` will still function.  
 
 Finally, make sure that the terraform binary is available on your `PATH`. This process will differ depending on your  
-operating system I'll show you for Linux OS. 
+operating system I'll show you for Linux OS and Windows OS. 
+
+## For Linux OS
 
 Print a colon-separated list of locations in your PATH.
 
@@ -27,9 +29,20 @@ different.
 
 `$ mv ~/Downloads/terraform /usr/local/bin/`
 
-For more detail about adding binaries to your `path`, see this Stack Overflow article.
+## For Windows
+Extract it to a location like `C:\Terraform`. 
+
+Then Add Terraform to System PATH
+
+  - Open `Start Menu` and search for `Environment Variables`.
+  - Click `Edit` the system environment variables.
+  - In the System Properties window, click `Environment Variables`.
+  - Under System variables, find and select `Path`, then click `Edit`.
+  - Click `New`, then enter `C:\Terraform` (or the folder where you extracted Terraform).
+  - Click `OK` to `save` and close the windows.  
+    
 ### Verify the installation
-Verify that the installation worked by opening a new terminal session and listing Terraform's available subcommands.
+Verify that the installation worked by opening a new terminal session and listing Terraform's available subcommands For Linux OS.
 
 `$ terraform -help` 
 
@@ -44,6 +57,11 @@ started with Terraform, stick with the common commands. For the
 other commands, please read the help and docs before usage.  
 ##...
 ```
+Verify Installation worked For Windows OS Open Command Prompt (cmd) or PowerShell and run:  
+
+`terraform -version`
+
+If Terraform is installed correctly, it will display the version number.
 # Build infrastructure
 
 With Terraform installed, we are ready to create your first infrastructure. we will provision an EC2 instance on   
