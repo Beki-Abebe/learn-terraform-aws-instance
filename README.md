@@ -270,3 +270,7 @@ aws_instance.app_server: Creation complete after 36s [id=i-01e03375ba238b384]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 You have now created infrastructure using Terraform! Visit the EC2 console and find your new EC2 instance.
+Once you no longer need infrastructure, you may want to destroy it to reduce your security exposure and costs.
+
+`terraform destroy`
+
