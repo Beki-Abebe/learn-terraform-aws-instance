@@ -109,11 +109,11 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = "us-east-1"
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-0c02fb55956c7d316"
   instance_type = "t2.micro"
 
   tags = {
@@ -230,7 +230,7 @@ Terraform will perform the following actions:
 
   # aws_instance.app_server will be created
   + resource "aws_instance" "app_server" {
-      + ami                          = "ami-830c94e3"
+      + ami                          = "ami-0c02fb55956c7d316"
       + arn                          = (known after apply)
 ##...
 
@@ -296,7 +296,7 @@ declare a different value.
 
 ```
  resource "aws_instance" "app_server" {
-   ami           = "ami-08d70e59c07c61a3a"
+   ami           = "ami-0c02fb55956c7d316"
    instance_type = "t2.micro"
 
    tags = {
@@ -319,7 +319,7 @@ Terraform will perform the following actions:
 
   # aws_instance.app_server will be created
   + resource "aws_instance" "app_server" {
-      + ami                          = "ami-08d70e59c07c61a3a"
+      + ami                          = "ami-0c02fb55956c7d316"
       + arn                          = (known after apply)
 ##...
 
@@ -382,5 +382,68 @@ aws_instance.app_server: Modifications complete after 7s [id=i-0bf954919ed765de1
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
 Setting variables via the command-line will not save their values. Terraform supports many ways  
-to use and set variables so you can avoid having to enter them repeatedly as you execute commands.  
+to use and set variables so you can avoid having to enter them repeatedly as you execute commands.
+
+# Query data with outputs
+
+Create a file called `outputs.tf` in your `learn-terraform-aws-instance` directory.
+
+Add the configuration below to `outputs.tf` to define outputs for your EC2 instance's ID and  
+IP address.  
+
+```
+output "instance_id" {
+  description = "ID of the EC2 instance"
+  value       = aws_instance.app_server.id
+}
+
+output "instance_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.app_server.public_ip
+}
+```
+Inspect output values
+
+You must apply this configuration before you can use these output values. Apply your configuration   
+now. Respond to the confirmation prompt with `yes`
+
+```
+$ terraform apply
+aws_instance.app_server: Refreshing state... [id=i-0bf954919ed765de1]
+
+Changes to Outputs:
+  + instance_id        = "i-0bf954919ed765de1"
+  + instance_public_ip = "54.186.202.254"
+
+You can apply this plan to save these new output values to the Terraform state,
+without changing any real infrastructure.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+instance_id = "i-0bf954919ed765de1"
+instance_public_ip = "54.186.202.254"
+```
+Terraform prints output values to the screen when you apply your configuration.  
+Query the outputs with the `terraform output` command.  
+
+```
+$ terraform output
+instance_id = "i-0bf954919ed765de1"
+instance_public_ip = "54.186.202.254"
+
+```
+Destroy your infrastructure. Respond to the confirmation prompt with yes.
+
+`
+$ terraform destroy
+`
 
