@@ -402,7 +402,7 @@ output "instance_public_ip" {
   value       = aws_instance.app_server.public_ip
 }
 ```
-Inspect output values
+## Inspect output values
 
 You must apply this configuration before you can use these output values. Apply your configuration   
 now. Respond to the confirmation prompt with `yes`
