@@ -1,0 +1,10 @@
+# Ignore Terraform state files and lock file
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+.terraform.lock.hcl
+
+
+
+
+
